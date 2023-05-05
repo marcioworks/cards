@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScans;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScans({@ComponentScan("br.com.marcioss.card.controller")})
+@ComponentScans({@ComponentScan("br.com.marcioss.cards.controller")})
 @EnableJpaRepositories("br.com.marcioss.cards.repository")
 @EntityScan("br.com.marcioss.cards.model")
 public class CardsApplication {

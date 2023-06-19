@@ -8,7 +8,7 @@ import br.com.marcioss.cards.repository.CardsRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import lombok.Getter;
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +28,7 @@ public class CardsController {
     private CardsServiceConfig cardsServiceConfig;
 
     @PostMapping("/myCards")
+    @Timed(value = "getCardDetails.time",description = "Time taken to return cards Details")
     public List<Cards> getCardDetails(@RequestHeader("marciossbank-correlation-id") String correlationId,@RequestBody Customer customer){
         logger.info("getCardDetails() method started");
          List<Cards> cards = cardsRepository.findByCustomerId(customer.getCustomerId());
